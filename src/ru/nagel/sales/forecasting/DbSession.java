@@ -3,10 +3,14 @@ package ru.nagel.sales.forecasting;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.nagel.sales.forecasting.models.BatchGoods;
+import ru.nagel.sales.forecasting.models.History;
 import ru.nagel.sales.forecasting.models.Product;
 import ru.nagel.sales.forecasting.models.Sales;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class DbSession {
     private static final String DB_URL = "jdbc:postgresql://127.0.0.1:5432/postgres";
@@ -75,6 +79,27 @@ public class DbSession {
         } catch (Exception e) {
             logger.error("Не удалось добавить поставку в базу");
             logger.error(e, e);
+        }
+    }
+
+    public History getHistoryProduct(int productId){
+        try (Statement statement = connection.createStatement()) {
+            String sqlRequest = "select * from public.sale where product_id="+productId;
+            ResultSet rs = statement.executeQuery(sqlRequest);
+            List<Sales> list = new ArrayList<>();
+            while (rs.next()){
+                list.add(new Sales(new java.util.Date(rs.getDate("date").getTime()),
+                        rs.getInt("count"),
+                        0,
+                        0,
+                        productId));
+            }
+            logger.info("Успешно добавлена!");
+            return new History(list);
+        } catch (Exception e) {
+            logger.error("Не удалось добавить поставку в базу");
+            logger.error(e, e);
+            return null;
         }
     }
 }
