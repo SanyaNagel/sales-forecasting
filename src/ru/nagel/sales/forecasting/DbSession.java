@@ -68,12 +68,12 @@ public class DbSession {
         }
     }
 
-    public void addSale(Sales sales){
+    public void addSale(Sales sales) {
         try (Statement statement = connection.createStatement()) {
-            String sqlRequest = "insert into public.sale (date,count,product_id) values('"+
-                  new Date(sales.getDate().getTime())+ "', " +
+            String sqlRequest = "insert into public.sale (date,count,product_id) values('" +
+                    new Date(sales.getDate().getTime()) + "', " +
                     sales.getCount() + ", " +
-                    sales.getProductId()+")";
+                    sales.getProductId() + ")";
             statement.executeUpdate(sqlRequest);
             logger.info("Успешно добавлена!");
         } catch (Exception e) {
@@ -82,22 +82,25 @@ public class DbSession {
         }
     }
 
-    public History getHistoryProduct(int productId){
+    public History getHistoryProduct(int productId) {
         try (Statement statement = connection.createStatement()) {
-            String sqlRequest = "select * from public.sale where product_id="+productId;
+            String sqlRequest = "select * from public.sale where product_id=" + productId;
             ResultSet rs = statement.executeQuery(sqlRequest);
             List<Sales> list = new ArrayList<>();
-            while (rs.next()){
-                list.add(new Sales(new java.util.Date(rs.getDate("date").getTime()),
-                        rs.getInt("count"),
-                        0,
-                        0,
-                        productId));
+            if (rs.next()) {
+                do {
+                    list.add(new Sales(new java.util.Date(rs.getDate("date").getTime()),
+                            rs.getInt("count"),
+                            0,
+                            0,
+                            productId));
+                } while (rs.next());
+                logger.info("Успешно получена история продукта!");
+                return new History(list);
+            }else{
+                throw new Exception("Не удалось получить историю продукта");
             }
-            logger.info("Успешно добавлена!");
-            return new History(list);
         } catch (Exception e) {
-            logger.error("Не удалось добавить поставку в базу");
             logger.error(e, e);
             return null;
         }

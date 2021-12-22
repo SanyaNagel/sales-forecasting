@@ -25,13 +25,8 @@ public class DependenciesMethod implements MethodForecasting{
 
     @Override
     public Result execution(Controller controller) {
-        //TODO Здесь подгружаем из базы данные
-        //TODO заряжаем их в Result
-        //TODO а Result уже выведет на сцену
         History product1 = session.getHistoryProduct(BITCOIN_PRODUCT_ID);
         History product2 = session.getHistoryProduct(ETHEREUM_PRODUCT_ID);
-        Result result = new ResultDependenciesMethod(controller, product1, product2);
-
-        return result;
+        return new ResultDependenciesMethod(controller, product1, product2);
     }
 }
