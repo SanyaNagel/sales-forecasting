@@ -5,11 +5,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.nagel.sales.forecasting.methods.MethodForecasting;
 
-public class SystemClass {
+public class System {
     private static final Logger logger = LogManager.getLogger();
     private ForecastGenerator generator;
 
-    public SystemClass() {
+    public System() {
         generator= new ForecastGenerator();
     }
 

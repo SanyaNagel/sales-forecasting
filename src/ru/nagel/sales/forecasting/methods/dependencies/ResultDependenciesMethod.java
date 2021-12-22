@@ -1,4 +1,4 @@
-package ru.nagel.sales.forecasting.methods;
+package ru.nagel.sales.forecasting.methods.dependencies;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -6,15 +6,18 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import ru.nagel.sales.forecasting.Controller;
+import ru.nagel.sales.forecasting.methods.Result;
 import ru.nagel.sales.forecasting.models.History;
 import ru.nagel.sales.forecasting.models.Sales;
 
 import java.util.List;
 
-public class ResultDependenciesMethod implements Result{
+public class ResultDependenciesMethod extends Result {
     private Controller controller;
     private History product1;
     private History product2;
+
+    public ResultDependenciesMethod(){}
 
     public ResultDependenciesMethod(Controller controller, History p1, History p2) {
         this.controller = controller;
@@ -24,6 +27,10 @@ public class ResultDependenciesMethod implements Result{
 
     @Override
     public void viewResult() {
+        if(errorMessage != null){
+            viewError();
+        }
+
         LineChart<?, ?> scene = controller.getScene();
         XYChart.Series series1 = new XYChart.Series();
         XYChart.Series series2 = new XYChart.Series();
@@ -39,14 +46,17 @@ public class ResultDependenciesMethod implements Result{
         scene.getData().add(series2);
     }
 
+    @Override
+    public void viewError() {
+        //Вывод ошибки на форму
+    }
+
     private ObservableList<XYChart.Data> convertData(History history, double xMaxScene, double yMaxScene){
         ObservableList<XYChart.Data> datas = FXCollections.observableArrayList();
-        int countDays = history.getSalesList().size();
         int maxParamCount = maxCount(history.getSalesList());
         int current = 0;
         for(Sales sales : history.getSalesList()){
-            datas.add(new XYChart.Data(String.valueOf(current++),
-                    yMaxScene/maxParamCount*sales.getCount()));
+            datas.add(new XYChart.Data(String.valueOf(current++), yMaxScene/maxParamCount*sales.getCount()));
         }
         return datas;
     }

@@ -1,7 +1,9 @@
-package ru.nagel.sales.forecasting.methods;
+package ru.nagel.sales.forecasting.methods.dependencies;
 
 import ru.nagel.sales.forecasting.Controller;
 import ru.nagel.sales.forecasting.DbSession;
+import ru.nagel.sales.forecasting.methods.MethodForecasting;
+import ru.nagel.sales.forecasting.methods.Result;
 import ru.nagel.sales.forecasting.models.History;
 
 import static ru.nagel.sales.forecasting.Constants.BITCOIN_PRODUCT_ID;
@@ -10,17 +12,11 @@ import static ru.nagel.sales.forecasting.Constants.ETHEREUM_PRODUCT_ID;
 /**
  * Прогнозирование продаж, МЕТОД ЗАВИСИМОСТЕЙ
  */
-public class DependenciesMethod implements MethodForecasting{
-    private String name;
-    private DbSession session;
-    public DependenciesMethod(String name) {
-        session = new DbSession();
-        this.name = name;
-    }
+public class DependenciesMethod extends MethodForecasting {
 
-    @Override
-    public String getMethodName() {
-        return name;
+    public DependenciesMethod(String name) {
+        setName(name);
+        setSession(new DbSession());
     }
 
     @Override
