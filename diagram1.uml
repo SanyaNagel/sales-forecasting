@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ru.nagel.sales.forecasting</OriginalElement>
+  <nodes>
+    <node x="68.01111111111112" y="840.0">ru.nagel.sales.forecasting.System</node>
+    <node x="353.41666666666674" y="453.0">ru.nagel.sales.forecasting.Warehouse</node>
+    <node x="287.8206349206349" y="171.0">ru.nagel.sales.forecasting.DbSession</node>
+    <node x="674.9357142857143" y="0.0">ru.nagel.sales.forecasting.Main</node>
+    <node x="6.5" y="204.5">ru.nagel.sales.forecasting.Controller</node>
+    <node x="181.4166666666667" y="499.0">ru.nagel.sales.forecasting.methods</node>
+    <node x="0.0" y="0.0">ru.nagel.sales.forecasting.Constants</node>
+    <node x="127.01111111111112" y="635.0">ru.nagel.sales.forecasting.ForecastGenerator</node>
+    <node x="461.9357142857143" y="625.0">ru.nagel.sales.forecasting.LoadBase</node>
+    <node x="431.66666666666674" y="45.5">ru.nagel.sales.forecasting.models</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.nagel.sales.forecasting.methods" target="ru.nagel.sales.forecasting.methods">
+      <point x="-50.66666666666666" y="15.0" />
+      <point x="206.75000000000006" y="549.0" />
+      <point x="161.4166666666667" y="549.0" />
+      <point x="161.4166666666667" y="514.0" />
+      <point x="-76.0" y="-0.0" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.DbSession" target="ru.nagel.sales.forecasting.models">
+      <point x="-56.49999999999997" y="-116.0" />
+      <point x="344.320634920635" y="141.0" />
+      <point x="494.66666666666674" y="141.0" />
+      <point x="-9.0" y="15.0" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.methods" target="ru.nagel.sales.forecasting.DbSession">
+      <point x="0.0" y="-15.0" />
+      <point x="257.41666666666674" y="423.0" />
+      <point x="310.42063492063494" y="423.0" />
+      <point x="-90.4" y="116.0" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.ForecastGenerator" target="ru.nagel.sales.forecasting.Controller">
+      <point x="-73.0" y="-72.5" />
+      <point x="163.51111111111112" y="600.0" />
+      <point x="138.4357142857143" y="600.0" />
+      <point x="138.4357142857143" y="433.0" />
+      <point x="150.69999999999993" y="433.0" />
+      <point x="41.19999999999993" y="82.5" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.models" target="ru.nagel.sales.forecasting.models">
+      <point x="-27.0" y="15.0" />
+      <point x="476.66666666666674" y="115.5" />
+      <point x="391.66666666666674" y="115.5" />
+      <point x="391.66666666666674" y="50.5" />
+      <point x="-72.0" y="-10.0" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.Controller" target="ru.nagel.sales.forecasting.Constants">
+      <point x="0.0" y="-82.5" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.ForecastGenerator" target="ru.nagel.sales.forecasting.methods">
+      <point x="0.0" y="-72.5" />
+      <point x="236.51111111111112" y="600.0" />
+      <point x="257.41666666666674" y="600.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.Controller" target="ru.nagel.sales.forecasting.System">
+      <point x="-41.19999999999999" y="82.5" />
+      <point x="68.30000000000001" y="423.0" />
+      <point x="98.50000000000003" y="423.0" />
+      <point x="98.50000000000003" y="820.0" />
+      <point x="113.76111111111112" y="820.0" />
+      <point x="-45.75" y="-50.0" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.LoadBase" target="ru.nagel.sales.forecasting.models">
+      <point x="63.0" y="-82.5" />
+      <point x="608.9357142857143" y="600.0" />
+      <point x="605.9166666666667" y="600.0" />
+      <point x="605.9166666666667" y="141.0" />
+      <point x="566.6666666666667" y="141.0" />
+      <point x="63.00000000000003" y="15.0" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.methods" target="ru.nagel.sales.forecasting.Controller">
+      <point x="-50.66666666666663" y="-15.0" />
+      <point x="206.75000000000009" y="433.0" />
+      <point x="191.89999999999998" y="433.0" />
+      <point x="82.39999999999998" y="82.5" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.Warehouse" target="ru.nagel.sales.forecasting.models">
+      <point x="86.625" y="-61.0" />
+      <point x="555.5416666666667" y="433.0" />
+      <point x="540.8011904761905" y="433.0" />
+      <point x="540.8011904761905" y="151.0" />
+      <point x="530.6666666666667" y="151.0" />
+      <point x="27.0" y="15.0" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.System" target="ru.nagel.sales.forecasting.ForecastGenerator">
+      <point x="15.25" y="-50.0" />
+      <point x="174.76111111111112" y="820.0" />
+      <point x="163.51111111111112" y="820.0" />
+      <point x="-73.0" y="72.5" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.Warehouse" target="ru.nagel.sales.forecasting.DbSession">
+      <point x="-86.625" y="-61.0" />
+      <point x="382.29166666666674" y="433.0" />
+      <point x="400.8206349206349" y="433.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="ru.nagel.sales.forecasting.LoadBase" target="ru.nagel.sales.forecasting.Warehouse">
+      <point x="-63.0" y="-82.5" />
+      <point x="482.9357142857143" y="600.0" />
+      <point x="411.16666666666674" y="600.0" />
+      <point x="-57.75" y="61.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6083333333333333" x="412.0" y="470.00000000000006" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
